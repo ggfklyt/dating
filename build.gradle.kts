@@ -1,18 +1,24 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm")
+    kotlin("jvm") apply false
 }
 
-allprojects {
-    group = "ru.nonsuch1"
-    version = "1.0-SNAPSHOT"
+group = "ru.ggfklyt.dating"
+version = "0.0.1"
 
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    group = rootProject.group
+    version = rootProject.version
     repositories {
-        google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io")}
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "17"
     }
 }
